@@ -1,9 +1,7 @@
-from fastapi import FastAPI
-from .database import engine
-from .database import Base
+from .database import engine, Base
 from .controllers import persona_controller
 from .error_handlers import register_exception_handlers
-
+from fastapi import FastAPI
 
 def create_app() -> FastAPI:
     """Application factory."""

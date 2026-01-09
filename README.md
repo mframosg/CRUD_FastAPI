@@ -131,3 +131,51 @@ curl -s -X DELETE http://127.0.0.1:8000/personas/1 -i
 
 - Si lo iniciaste en la misma terminal: usa `CTRL+C`.
 - Si corre en background, puedes cerrar esa terminal o matar el proceso de uvicorn (`pkill -f uvicorn`).
+
+
+
+## Cambios y mejoras aplicadas
+
+### 1. Nuevos endpoints documentados
+
+- Se añadió al listado de endpoints principales:
+  - `POST /personas/poblar` → poblar la base con datos de ejemplo.
+
+### 2. Aclaraciones sobre instalación/entorno
+
+- Se especificó:
+  - Python 3.10+ (recomendado 3.11).
+  - Uso de `uvicorn app.main:app --reload` indicando el módulo `app.main`.
+
+### 3. Conexión a bases de datos
+
+- Se añadió una sección más explícita de conexión a otras bases:
+  - Ejemplo para MySQL en `.env`.
+  - Recordatorio de instalar el driver correspondiente.
+
+### 4. Ejemplos de uso y pruebas
+
+- Se revisaron y limpiaron las URLs de los ejemplos `curl` (sin formato de Markdown de enlaces) para que puedan copiarse y ejecutarse directamente.
+- Se dejó explícito el uso de `Content-Type: application/json` en las peticiones que requieren cuerpo JSON.
+
+### 5. Estructura de proyecto / MVC
+
+- Se reforzó la explicación de la estructura MVC:
+  - `models` (SQLAlchemy).
+  - `views` (Pydantic).
+  - `controllers` (routers FastAPI).
+
+### 6. Endpoint de salud
+
+- Se mantiene documentado `GET /health` como verificación rápida del estado de la aplicación.
+
+### 7. Errores frecuentes que se detectaron (contexto de desarrollo)
+
+Aunque no está en el cuerpo principal, se tuvo en cuenta en el diseño del proyecto:
+
+- Errores de importación del módulo `main` al usar `uvicorn main:app`:
+  - Se soluciona con la estructura de paquete `app` y `uvicorn app.main:app`.
+- Errores `405 Method Not Allowed` para `/personas/poblar`:
+  - Se verificó que el endpoint debe ser `@router.post("/personas/poblar")` y se debe llamar con método `POST`.
+- Errores `404 Not Found` en `DELETE /personas/{id}`:
+  - Se revisó la correcta definición del endpoint `@router.delete("/{id}")` y la existencia del recurso antes de eliminar.
