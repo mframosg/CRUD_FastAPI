@@ -1,79 +1,256 @@
 {
-  "info": {
-    "name": "FastAPI Persona CRUD (MySQL)",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_postman_id": "7d4b4d3a-8bf0-4a05-91b1-42f8f3e3f1d1"
-  },
-  "variable": [
-    { "key": "base_url", "value": "http://localhost:8000" },
-    { "key": "persona_id", "value": "1" }
-  ],
-  "item": [
-    {
-      "name": "Health",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": { "raw": "{{base_url}}/health", "host": ["{{base_url}}"], "path": ["health"] }
-      }
-    },
-    {
-      "name": "Personas",
-      "item": [
-        {
-          "name": "Create Persona",
-          "request": {
-            "method": "POST",
-            "header": [ { "key": "Content-Type", "value": "application/json" } ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"first_name\": \"Juan\",\n  \"last_name\": \"Pérez\",\n  \"email\": \"juan.perez@example.com\",\n  \"phone\": \"+57 3000000000\",\n  \"birth_date\": \"1990-05-20\",\n  \"is_active\": true,\n  \"notes\": \"Cliente frecuente\"\n}"
-            },
-            "url": { "raw": "{{base_url}}/personas", "host": ["{{base_url}}"], "path": ["personas"] }
-          }
-        },
-        {
-          "name": "List Personas",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/personas",
-              "host": ["{{base_url}}"],
-              "path": ["personas"],
-              "query": [ { "key": "skip", "value": "0" }, { "key": "limit", "value": "100" } ]
-            }
-          }
-        },
-        {
-          "name": "Get Persona by ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": { "raw": "{{base_url}}/personas/{{persona_id}}", "host": ["{{base_url}}"], "path": ["personas", "{{persona_id}}"] }
-          }
-        },
-        {
-          "name": "Update Persona",
-          "request": {
-            "method": "PUT",
-            "header": [ { "key": "Content-Type", "value": "application/json" } ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"juan.perez2@example.com\",\n  \"notes\": \"Actualizado\"\n}"
-            },
-            "url": { "raw": "{{base_url}}/personas/{{persona_id}}", "host": ["{{base_url}}"], "path": ["personas", "{{persona_id}}"] }
-          }
-        },
-        {
-          "name": "Delete Persona",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": { "raw": "{{base_url}}/personas/{{persona_id}}", "host": ["{{base_url}}"], "path": ["personas", "{{persona_id}}"] }
-          }
-        }
-      ]
-    }
-  ]
+	"info": {
+		"_postman_id": "1eb74648-9073-44cf-992a-d41868602056",
+		"name": "FastAPI Persona CRUD (MySQL)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "59188063",
+		"_collection_link": "https://alexmitu2007-4211058.postman.co/workspace/Alexander's-Workspace~021b3b8d-c1b8-4d8c-8d5c-04946a0abbbe/collection/59188063-1eb74648-9073-44cf-992a-d41868602056?action=share&source=collection_link&creator=59188063"
+	},
+	"item": [
+		{
+			"name": "Personas",
+			"item": [
+				{
+					"name": "Create Persona",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"Juan\",\n  \"last_name\": \"Pérez\",\n  \"email\": \"juan.perez@example.com\",\n  \"phone\": \"+57 3000000000\",\n  \"birth_date\": \"1990-05-20\",\n  \"is_active\": true,\n  \"notes\": \"Cliente frecuente\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/personas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"personas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Personas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/personas?skip=0&limit=100",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"personas"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Persona by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/personas/{{persona_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"personas",
+								"{{persona_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Persona",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"juan.perez2@example.com\",\n  \"notes\": \"Actualizado\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/personas/{{persona_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"personas",
+								"{{persona_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Persona",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/personas/{{persona_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"personas",
+								"{{persona_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Base de Datos",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/personas/reset",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"personas",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exportar a CSV",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "postman-echo.com/get",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Poblar Base de Datos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "postman-echo.com/post",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "persona_id",
+			"value": "1"
+		}
+	]
 }
