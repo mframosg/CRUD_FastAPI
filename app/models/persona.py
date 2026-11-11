@@ -1,7 +1,6 @@
 from datetime import datetime, date
 from sqlalchemy import String, Text, Boolean, Integer, Date, DateTime, func
 from sqlalchemy.orm import Mapped, mapped_column
-from . import __init__  # noqa: F401  # ensure package context
 from ..database import Base
 
 
